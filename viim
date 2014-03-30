@@ -1,0 +1,37 @@
+#!/usr/bin/python
+#coding: utf-8
+
+import random
+import time
+import os
+
+face = ["< o>< o>","('o')","(`o´)"]
+
+beamType = ["-----o","-----*","-----@","=====o","=====*","=====@"]
+
+gunner = face[random.randint(0,len(face)-1)]
+
+beam = beamType[random.randint(0,len(beamType)-1)]
+
+def Clear():
+	os.system("clear")
+
+def Shot():
+	x = 0
+	Clear()
+	for t in range(30):
+		str = gunner
+		if len(gunner) > x:
+			str += beam[len(gunner)-x:]
+		else:
+			i = len(gunner)
+			while i < x:
+				str += " "
+				i+=1
+			str += beam
+		print(str)
+		x+=1
+		time.sleep(0.5)
+		Clear()
+
+Shot()
